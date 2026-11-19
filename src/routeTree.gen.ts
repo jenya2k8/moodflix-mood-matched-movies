@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as ResultsRouteImport } from './routes/results'
+import { Route as WelcomeRouteImport } from './routes/welcome'
+import { Route as DiscoverDurationRouteImport } from './routes/discover.duration'
+import { Route as DiscoverMoodRouteImport } from './routes/discover.mood'
+import { Route as DiscoverPreferencesRouteImport } from './routes/discover.preferences'
+import { Route as DiscoverTypeRouteImport } from './routes/discover.type'
+import { Route as TitleIdRouteImport } from './routes/title.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultsRoute = ResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WelcomeRoute = WelcomeRouteImport.update({
+  id: '/welcome',
+  path: '/welcome',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscoverDurationRoute = DiscoverDurationRouteImport.update({
+  id: '/discover/duration',
+  path: '/discover/duration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscoverMoodRoute = DiscoverMoodRouteImport.update({
+  id: '/discover/mood',
+  path: '/discover/mood',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscoverPreferencesRoute = DiscoverPreferencesRouteImport.update({
+  id: '/discover/preferences',
+  path: '/discover/preferences',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscoverTypeRoute = DiscoverTypeRouteImport.update({
+  id: '/discover/type',
+  path: '/discover/type',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TitleIdRoute = TitleIdRouteImport.update({
+  id: '/title/$id',
+  path: '/title/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/profile': typeof ProfileRoute
+  '/results': typeof ResultsRoute
+  '/welcome': typeof WelcomeRoute
+  '/discover/duration': typeof DiscoverDurationRoute
+  '/discover/mood': typeof DiscoverMoodRoute
+  '/discover/preferences': typeof DiscoverPreferencesRoute
+  '/discover/type': typeof DiscoverTypeRoute
+  '/title/$id': typeof TitleIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/profile': typeof ProfileRoute
+  '/results': typeof ResultsRoute
+  '/welcome': typeof WelcomeRoute
+  '/discover/duration': typeof DiscoverDurationRoute
+  '/discover/mood': typeof DiscoverMoodRoute
+  '/discover/preferences': typeof DiscoverPreferencesRoute
+  '/discover/type': typeof DiscoverTypeRoute
+  '/title/$id': typeof TitleIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/profile': typeof ProfileRoute
+  '/results': typeof ResultsRoute
+  '/welcome': typeof WelcomeRoute
+  '/discover/duration': typeof DiscoverDurationRoute
+  '/discover/mood': typeof DiscoverMoodRoute
+  '/discover/preferences': typeof DiscoverPreferencesRoute
+  '/discover/type': typeof DiscoverTypeRoute
+  '/title/$id': typeof TitleIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/profile'
+    | '/results'
+    | '/welcome'
+    | '/discover/duration'
+    | '/discover/mood'
+    | '/discover/preferences'
+    | '/discover/type'
+    | '/title/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/profile'
+    | '/results'
+    | '/welcome'
+    | '/discover/duration'
+    | '/discover/mood'
+    | '/discover/preferences'
+    | '/discover/type'
+    | '/title/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/profile'
+    | '/results'
+    | '/welcome'
+    | '/discover/duration'
+    | '/discover/mood'
+    | '/discover/preferences'
+    | '/discover/type'
+    | '/title/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProfileRoute: typeof ProfileRoute
+  ResultsRoute: typeof ResultsRoute
+  WelcomeRoute: typeof WelcomeRoute
+  DiscoverDurationRoute: typeof DiscoverDurationRoute
+  DiscoverMoodRoute: typeof DiscoverMoodRoute
+  DiscoverPreferencesRoute: typeof DiscoverPreferencesRoute
+  DiscoverTypeRoute: typeof DiscoverTypeRoute
+  TitleIdRoute: typeof TitleIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/results': {
+      id: '/results'
+      path: '/results'
+      fullPath: '/results'
+      preLoaderRoute: typeof ResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/welcome': {
+      id: '/welcome'
+      path: '/welcome'
+      fullPath: '/welcome'
+      preLoaderRoute: typeof WelcomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discover/duration': {
+      id: '/discover/duration'
+      path: '/discover/duration'
+      fullPath: '/discover/duration'
+      preLoaderRoute: typeof DiscoverDurationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discover/mood': {
+      id: '/discover/mood'
+      path: '/discover/mood'
+      fullPath: '/discover/mood'
+      preLoaderRoute: typeof DiscoverMoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discover/preferences': {
+      id: '/discover/preferences'
+      path: '/discover/preferences'
+      fullPath: '/discover/preferences'
+      preLoaderRoute: typeof DiscoverPreferencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discover/type': {
+      id: '/discover/type'
+      path: '/discover/type'
+      fullPath: '/discover/type'
+      preLoaderRoute: typeof DiscoverTypeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/title/$id': {
+      id: '/title/$id'
+      path: '/title/$id'
+      fullPath: '/title/$id'
+      preLoaderRoute: typeof TitleIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProfileRoute: ProfileRoute,
+  ResultsRoute: ResultsRoute,
+  WelcomeRoute: WelcomeRoute,
+  DiscoverDurationRoute: DiscoverDurationRoute,
+  DiscoverMoodRoute: DiscoverMoodRoute,
+  DiscoverPreferencesRoute: DiscoverPreferencesRoute,
+  DiscoverTypeRoute: DiscoverTypeRoute,
+  TitleIdRoute: TitleIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

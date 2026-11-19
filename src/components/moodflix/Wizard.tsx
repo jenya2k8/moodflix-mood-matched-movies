@@ -57,15 +57,17 @@ export function WizardNav({ step, validate, onError }: { step: WizardStep; valid
   const isLast = index === steps.length - 1;
 
   const back = () => {
-    if (index <= 0) navigate({ to: "/welcome" });
-    else navigate({ to: STEP_PATH[steps[index - 1]] });
+    const prev = steps[index - 1];
+    if (index <= 0 || !prev) navigate({ to: "/welcome" });
+    else navigate({ to: STEP_PATH[prev] });
   };
   const next = () => {
     const err = validate();
     onError(err);
     if (err) return;
-    if (isLast) navigate({ to: "/results" });
-    else navigate({ to: STEP_PATH[steps[index + 1]] });
+    const nextStep = steps[index + 1];
+    if (isLast || !nextStep) navigate({ to: "/results" });
+    else navigate({ to: STEP_PATH[nextStep] });
   };
 
   return (

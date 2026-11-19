@@ -57,7 +57,7 @@ function Detail({ title: t }: { title: Title }) {
   const { ratings, watchedIds, watchlistIds, profile } = useMoodflix();
   const [open, setOpen] = useState(false);
   const audioOptions = [`${t.language} (original)`, ...t.dubbedLanguages.map((l) => `${l} (dubbed)`)];
-  const [audio, setAudio] = useState(audioOptions[0]);
+  const [audio, setAudio] = useState<string>(audioOptions[0] ?? "");
   const [subs, setSubs] = useState<string>(t.subtitles[0] ?? "off");
   const rating = ratings.find((r) => r.titleId === t.id);
   const watched = watchedIds.has(t.id);

@@ -74,8 +74,8 @@ describe("scoring", () => {
       [rating(byTitle("Friends").id, 5, true), rating(byTitle("Breaking Bad").id, 1, false)],
       TITLES,
     );
-    expect(profile.genres.Comedy).toBe(3);
-    expect(profile.genres.Crime).toBe(-3);
+    expect(profile.genres["Comedy"]).toBe(3);
+    expect(profile.genres["Crime"]).toBe(-3);
     expect(tasteScore(byTitle("The Office"), profile)).toBeGreaterThan(0);
     expect(tasteScore(byTitle("Mirzapur"), profile)).toBeLessThan(0);
   });

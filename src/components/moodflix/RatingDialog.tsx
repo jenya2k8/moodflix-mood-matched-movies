@@ -20,7 +20,7 @@ export function RatingDialog({
   title: Title;
   open: boolean;
   onOpenChange: (o: boolean) => void;
-  existing?: RatingEntry;
+  existing?: RatingEntry | undefined;
 }) {
   const [stars, setStars] = useState(0);
   const [liked, setLiked] = useState<boolean | null>(null);

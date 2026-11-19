@@ -156,7 +156,7 @@ function AuthPage() {
   );
 }
 
-function Field({ id, label, error, hint, ...props }: { id: string; label: string; error?: string; hint?: string } & React.ComponentProps<typeof Input>) {
+function Field({ id, label, error, hint, ...props }: { id: string; label: string; error?: string | undefined; hint?: string | undefined } & React.ComponentProps<typeof Input>) {
   return (
     <div className="space-y-1.5">
       <Label htmlFor={id}>{label}</Label>

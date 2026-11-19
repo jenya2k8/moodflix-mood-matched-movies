@@ -7,9 +7,9 @@ import type { Title } from "@/lib/types";
 
 interface Props {
   title: Title;
-  why?: string;
-  match?: number;
-  watched?: boolean;
+  why?: string | undefined;
+  match?: number | undefined;
+  watched?: boolean | undefined;
   index?: number;
 }
 

@@ -99,7 +99,7 @@ function PreferencesStep() {
               {p.subtitles ? "On" : "Off"}
             </label>
             {p.subtitles && (
-              <Select value={p.subtitleLanguage ?? undefined} onValueChange={(v) => savePreferences({ subtitleLanguage: v })}>
+              <Select value={p.subtitleLanguage ?? ""} onValueChange={(v) => savePreferences({ subtitleLanguage: v })}>
                 <SelectTrigger className="w-44" aria-label="Subtitle language">
                   <SelectValue placeholder="Subtitle language" />
                 </SelectTrigger>
@@ -120,7 +120,7 @@ function PreferencesStep() {
               max={9}
               step={0.1}
               value={[p.minImdb]}
-              onValueChange={([v]) => savePreferences({ minImdb: Math.round(v * 10) / 10 })}
+              onValueChange={([v]) => savePreferences({ minImdb: Math.round((v ?? 7) * 10) / 10 })}
               aria-label="Minimum IMDb rating"
             />
             <span className="inline-flex min-w-16 items-center gap-1 font-display text-3xl font-black text-gold">

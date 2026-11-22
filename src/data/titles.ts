@@ -1,3 +1,4 @@
+import { STREAMS, TRAILERS } from "@/data/media";
 import type { AgeRating, ContentType, Mood, Platform, Title } from "@/lib/types";
 
 /**
@@ -32,9 +33,14 @@ const slug = (s: string) =>
 
 function make(s: Seed): Title {
   const { hues, ...rest } = s;
+  const id = slug(s.title);
+  const trailer = TRAILERS[id];
+  const stream = STREAMS[id];
   return {
     ...rest,
-    id: slug(s.title),
+    id,
+    ...(trailer ? { trailer } : {}),
+    ...(stream ? { stream } : {}),
     dubbedLanguages: s.dubbedLanguages ?? [],
     subtitles: s.subtitles ?? ["English"],
     poster: { hues },
@@ -123,6 +129,18 @@ const SEEDS: Seed[] = [
   { title: "Free Solo", type: "documentary", genres: ["Sport", "Adventure"], moods: ["thrilled", "excited"], runtime: 100, ageRating: "UA13", language: "English", subtitles: ["English"], imdbRating: 8.1, year: 2018, platform: "hotstar", hues: [30, 210], description: "Alex Honnold attempts to climb El Capitan without a rope.", cast: ["Alex Honnold", "Tommy Caldwell"] },
   { title: "The Elephant Whisperers", type: "documentary", genres: ["Nature", "Family"], moods: ["happy", "relaxed", "sad"], runtime: 41, ageRating: "U", language: "Tamil", dubbedLanguages: ["Hindi", "English"], subtitles: ["English", "Hindi"], imdbRating: 7.5, year: 2022, platform: "netflix", hues: [100, 30], description: "A couple in Tamil Nadu raises an orphaned baby elephant as their own.", cast: ["Bomman", "Bellie"] },
   { title: "Searching for Sugar Man", type: "documentary", genres: ["Biography"], moods: ["nostalgic", "curious"], runtime: 86, ageRating: "UA13", language: "English", subtitles: ["English"], imdbRating: 8.2, year: 2012, platform: "prime", hues: [40, 260], description: "Two fans set out to discover what happened to a forgotten musician who became a legend in South Africa.", cast: ["Rodriguez", "Stephen Segerman"] },
+
+  // ── Free to watch: public domain & Creative Commons (playable in full) ──
+  { title: "Night of the Living Dead", type: "movie", genres: ["Horror", "Thriller"], moods: ["thrilled", "nostalgic"], runtime: 96, ageRating: "A", language: "English", subtitles: [], imdbRating: 7.8, year: 1968, platform: "free", hues: [0, 280], description: "Strangers barricade themselves inside a Pennsylvania farmhouse as the recently dead rise and close in. The film that invented the modern zombie.", cast: ["Duane Jones", "Judith O'Dea", "Karl Hardman"] },
+  { title: "His Girl Friday", type: "movie", genres: ["Comedy", "Romance"], moods: ["happy", "romantic", "nostalgic"], runtime: 92, ageRating: "U", language: "English", subtitles: [], imdbRating: 7.8, year: 1940, platform: "free", hues: [40, 0], description: "A fast-talking newspaper editor schemes to win back his ace reporter, who also happens to be his ex-wife, before she remarries.", cast: ["Cary Grant", "Rosalind Russell", "Ralph Bellamy"] },
+  { title: "The General", type: "movie", genres: ["Comedy", "Action", "Adventure"], moods: ["happy", "excited", "nostalgic"], runtime: 79, ageRating: "U", language: "English", subtitles: ["English"], imdbRating: 8.1, year: 1926, platform: "free", hues: [30, 200], description: "Silent classic: a Confederate train engineer chases the spies who stole his beloved locomotive, and his sweetheart with it.", cast: ["Buster Keaton", "Marion Mack"] },
+  { title: "Sherlock Jr.", type: "movie", genres: ["Comedy", "Fantasy"], moods: ["happy", "curious"], runtime: 45, ageRating: "U", language: "English", subtitles: ["English"], imdbRating: 8.2, year: 1924, platform: "free", hues: [210, 40], description: "Silent comedy: a projectionist who dreams of being a detective falls asleep and walks straight into the film he is showing.", cast: ["Buster Keaton", "Kathryn McGuire"] },
+  { title: "Detour", type: "movie", genres: ["Crime", "Thriller"], moods: ["thrilled", "curious"], runtime: 68, ageRating: "UA13", language: "English", subtitles: [], imdbRating: 7.2, year: 1945, platform: "free", hues: [260, 0], description: "A hitchhiking pianist's luck turns deadly on the road to Los Angeles in this lean, fatalistic film noir.", cast: ["Tom Neal", "Ann Savage"] },
+  { title: "Charade", type: "movie", genres: ["Romance", "Thriller", "Comedy"], moods: ["romantic", "thrilled", "curious"], runtime: 113, ageRating: "UA13", language: "English", subtitles: [], imdbRating: 7.8, year: 1963, platform: "free", hues: [330, 210], description: "In Paris, a widow is hunted by her late husband's partners in crime, and a charming stranger may or may not be on her side.", cast: ["Cary Grant", "Audrey Hepburn", "Walter Matthau"] },
+  { title: "Big Buck Bunny", type: "movie", genres: ["Animation", "Comedy", "Family"], moods: ["happy", "relaxed"], runtime: 10, ageRating: "U", language: "English", subtitles: [], imdbRating: 6.4, year: 2008, platform: "free", hues: [100, 50], description: "A gentle giant rabbit gets even with three bullying rodents in this open movie from the Blender Foundation.", cast: ["Blender Foundation"] },
+  { title: "Sintel", type: "movie", genres: ["Animation", "Fantasy", "Adventure"], moods: ["sad", "excited"], runtime: 15, ageRating: "UA13", language: "English", subtitles: ["English"], imdbRating: 7.4, year: 2010, platform: "free", hues: [20, 220], description: "A lonely young woman searches a harsh world for the baby dragon she once rescued. Blender Foundation open movie.", cast: ["Halina Reijn", "Thom Hoffman"] },
+  { title: "Tears of Steel", type: "movie", genres: ["Sci-Fi", "Action"], moods: ["excited", "curious"], runtime: 12, ageRating: "UA13", language: "English", subtitles: ["English"], imdbRating: 6.1, year: 2012, platform: "free", hues: [200, 280], description: "In a future Amsterdam, a group of scientists try to save the world by reliving a painful breakup. Blender Foundation open movie.", cast: ["Derek de Lint", "Sergio Hasselbaink", "Vanja Rukavina"] },
+  { title: "Elephants Dream", type: "movie", genres: ["Animation", "Sci-Fi"], moods: ["curious"], runtime: 11, ageRating: "U", language: "English", subtitles: ["English"], imdbRating: 6.4, year: 2006, platform: "free", hues: [180, 30], description: "Two men explore a strange, endless machine whose rooms change with their state of mind. The first Blender open movie.", cast: ["Tygo Gernandt", "Cas Jansen"] },
 ];
 
 export const TITLES: Title[] = SEEDS.map(make);

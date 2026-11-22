@@ -89,12 +89,14 @@ export const PLATFORMS: { id: Platform | "any"; label: string }[] = [
   { id: "netflix", label: "Netflix" },
   { id: "prime", label: "Prime Video" },
   { id: "hotstar", label: "Hotstar" },
+  { id: "free", label: "Free on MoodFlix" },
 ];
 
 export const PLATFORM_LABEL: Record<Platform, string> = {
   netflix: "Netflix",
   prime: "Prime Video",
   hotstar: "Hotstar",
+  free: "Free on MoodFlix",
 };
 
 export const AGE_LABEL: Record<AgeRating, string> = {

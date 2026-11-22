@@ -11,7 +11,8 @@ export type Mood =
   | "curious"
   | "nostalgic";
 export type AgeRating = "U" | "UA13" | "UA16" | "A";
-export type Platform = "netflix" | "prime" | "hotstar";
+/** "free" = public-domain / Creative Commons films MoodFlix can play in full. */
+export type Platform = "netflix" | "prime" | "hotstar" | "free";
 export type Era = "classic" | "2000s" | "recent";
 export type LengthBucket = "short" | "medium" | "long" | "any";
 
@@ -38,6 +39,28 @@ export interface Title {
   poster: { hues: [number, number]; url?: string };
   description: string;
   cast: string[];
+  /** Verified official trailer, when one exists. */
+  trailer?: Trailer;
+  /** Legally playable full film, when one exists. */
+  stream?: Stream;
+}
+
+export interface Trailer {
+  youtubeId: string;
+  /** Uploader as reported by YouTube. */
+  channel: string;
+  label: string;
+}
+
+export interface Stream {
+  /** Direct video file (MP4). */
+  src: string;
+  /** Source page that documents the licence. */
+  pageUrl: string;
+  license: string;
+  licenseUrl: string;
+  /** Start of the 30-second scene preview, in seconds. */
+  previewStart: number;
 }
 
 export interface Preferences {
